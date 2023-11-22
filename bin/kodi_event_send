@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -eo pipefail
+
+PACKET_SIZE=1024
+
+EVENT_SERVER_HOST=${EVENT_SERVER_HOST:-localhost}
+EVENT_SERVER_PORT=${EVENT_SERVER_PORT:-9777}
+
+send() {
+  ## busybox (which is what many installations of Home Assistant run) does not have `socat` ...
+  # socat - "UDP4:${EVENT_SERVER_HOST}:${EVENT_SERVER_PORT}" &
+
+  # so lets use `nc` instead...
+  ## nc
+  ## -w SEC     Timeout for connects and final net reads
+  ## -u         UDP mode
+  # nc -u -w1 "${EVENT_SERVER_HOST}" "${EVENT_SERVER_PORT}" &
+
+  # or better still this works in bash
+  cat > "/dev/udp/${EVENT_SERVER_HOST}/${EVENT_SERVER_PORT}"
+}
+
+buffered_send() {
+  dir=$(mktemp -d)
+  cd "$dir"
+
+  split -b $PACKET_SIZE
+
+  for f in *; do
+    if ${DEBUG:-false}; then
+      >&2 xxd "$f"
+    fi
+    send < "$f"
+  done
+}
+
+buffered_send

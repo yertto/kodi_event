@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+${BASH_SOURCE%/*}/kodi_event_packet.zsh "$@" |
+  ${BASH_SOURCE%/*}/kodi_event_send
