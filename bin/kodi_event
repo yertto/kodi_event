@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+export PATH=$PATH:${BASH_SOURCE%/*}
 
-${BASH_SOURCE%/*}/kodi_event_packet.zsh "$@" |
-  ${BASH_SOURCE%/*}/kodi_event_send
+case ${BASH_SOURCE##*/} in
+  kodi-*) pt=${pt:-${BASH_SOURCE##*-}};;
+esac
+
+pt=${pt:-} kodi_event_packet "$@" |
+  kodi_event_send

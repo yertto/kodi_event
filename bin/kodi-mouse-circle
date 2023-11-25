@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# move the mouse around the screen in a circle (for fun)
+step=${step:-30}
+loops=${loops:-2}
+max_x=${max_x:-2^15}
+max_y=${max_y:-2^15}
+
+round() {
+  bc <<< "$(cat)/1"
+}
+
+for degree in $(seq 0 "$step" $((360 * loops))); do
+  x=$(bc --mathlib <<< "$max_x + ($max_x * s( ($degree/45) * a(1) ))" | round)
+  y=$(bc --mathlib <<< "$max_y - ($max_y * c( ($degree/45) * a(1) ))" | round)
+  pt=MOUSE kodi-mouse "$x" "$y"
+done

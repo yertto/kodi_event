@@ -17,8 +17,23 @@ send() {
   # nc -u -w1 "${EVENT_SERVER_HOST}" "${EVENT_SERVER_PORT}" &
 
   # or better still this works in bash
-  cat > "/dev/udp/${EVENT_SERVER_HOST}/${EVENT_SERVER_PORT}"
+  # cat > "/dev/udp/${EVENT_SERVER_HOST}/${EVENT_SERVER_PORT}"
+
+  if [[ -n ${BROADCAST:-} ]]; then
+    # hmmm... can't get nc to work...
+    # nc -u -w1 "${BROADCAST:-255.255.255.255}" "${EVENT_SERVER_PORT}"
+    # so we'll use socat for broadcasts...
+    # but wish we could just do...
+    # cat > "/dev/udp/${BROADCAST:-255.255.255.255}/${EVENT_SERVER_PORT}"
+    socat - "UDP-DATAGRAM:${BROADCAST:-255.255.255.255}:${EVENT_SERVER_PORT},broadcast"
+  else
+    cat > "/dev/udp/${EVENT_SERVER_HOST}/${EVENT_SERVER_PORT}"
+  fi
 }
+
+# Aliases for Home Assistant yaml boolean values
+True() { true; }
+False() { false; }
 
 buffered_send() {
   dir=$(mktemp -d)
@@ -28,10 +43,15 @@ buffered_send() {
 
   for f in *; do
     if ${DEBUG:-false}; then
+      >&2 echo "Sending from file: $dir/$f"
       >&2 xxd "$f"
     fi
-    send < "$f"
+    # shellcheck disable=SC2002
+    cat "$f" | send
   done
+
+  # Erggh... what could possibly go wrong here?!?!
+  rm -rf "$dir"
 }
 
 buffered_send
