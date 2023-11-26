@@ -1,7 +1,7 @@
 # kodi_event
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
-Minimalist bash shell scripts to compose and send [Event Server](https://kodi.wiki/view/EventServer packets to a [Kodi](https://kodi.tv).
+Minimalist bash shell scripts to compose and send [Event Server](https://kodi.wiki/view/EventServer) packets to a [Kodi](https://kodi.tv).
 
 (NB. This requires Kodi to be confirgured to [allow remote control from applications on other systems](https://kodi.wiki/view/Settings/Services/Control#Allow_remote_control_from_applications_on_other_systems))
 
