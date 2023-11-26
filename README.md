@@ -1,7 +1,7 @@
 # kodi_event
 [![Conventional Commits][conventional-commits-image]][conventional-commits-url]
 
-Bash shell scripts to compose and send Kodi Event packets to a Kodi Server
+Bash shell scripts to compose and send Kodi Event packets to a Kodi Server.
 
 ## Getting Started
 ### Installation:
