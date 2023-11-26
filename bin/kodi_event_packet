@@ -107,7 +107,7 @@ map_hostname_to_a_32_bit_integer() {
 }
 
 uid() {
-  map_hostname_to_a_32_bit_integer
+  echo "${uid:-$(map_hostname_to_a_32_bit_integer)}"
 }
 
 reserved() {

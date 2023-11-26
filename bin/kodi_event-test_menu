@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+export EVENT_SERVER_HOST=${EVENT_SERVER_HOST:-$(read -rp "EVENT_SERVER_HOST="; echo "$REPLY")}
+
+select packet in $(find shpecs/support -name '*.bin'); do
+  # shellcheck disable=SC2002
+  cat "$packet" | kodi_event_send
+done
