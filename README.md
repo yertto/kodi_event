@@ -17,23 +17,16 @@ export PATH="$HOME/Code/event_client/bin:$PATH"
 
 
 ### Alternatives
- * https://github.com/dmachard/kodi-remotecontrol#websocket-client
-   * This is a Python remote control for Kodi with minimal but sufficient basic controls. This remote control acts as a WebSocket Gateway of the UDP Event Server API for more reactivity.
- * https://github.com/KenKundert/kodi-control
-   * Kodi Control can be used to control a running instance of Kodi from a terminal. You can use it to interactively control the app and the players by opening a terminal and typing individual characters to perform various actions.
-   * (Uses Kodi's [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API), but not the [Event Server](https://kodi.wiki/view/EventServer))  
- * https://github.com/jcsaaddupuy/xbmc-client
-   * is a Kodi command line client, written in Python to control your Kodi instance through the [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API)
- * https://github.com/JavaWiz1/kodi-cli
-   * used from the command line to execute commands against a target Kodi host via the RPC interface defined at [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API/12)
- * https://github.com/jcsaaddupuy/python-kodijson
-   * Simple python module that allow kodi control over [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API)
- * https://github.com/davgeo/kodijsonrpc
-   * This provides a Kodi JSON-RPC client. All Kodi JSON methods can be called as methods to the KodiJSONClient instance.
- * https://github.com/davgeo/kodicontroller
-   * This package provides an array of functions which can be used to control a Kodi instance.
- * https://github.com/OnFreund/PyKodi
-   * An async python interface for Kodi over JSON-RPC. This is mostly designed to integrate with HomeAssistant. If you have other needs, there might be better packages available.
+| repo | [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API) | [Event Server](https://kodi.wiki/view/EventServer) | CLI | description |
+| :--- | :--- | :--- | :--- | :--- |
+| [kodi-remotecontrol](https://github.com/dmachard/kodi-remotecontrol#websocket-client) | 🚫 | :white_check_mark: | 🚫 | This is a Python remote control for Kodi with minimal but sufficient basic controls. This remote control acts as a WebSocket Gateway of the UDP Event Server API for more reactivity. |
+| [kodi-control](https://github.com/KenKundert/kodi-control) |:white_check_mark: | 🚫 | 🚫 | Kodi Control can be used to control a running instance of Kodi from a terminal. You can use it to interactively control the app and the players by opening a terminal and typing individual characters to perform various actions |
+| [xbmc-client](https://github.com/jcsaaddupuy/xbmc-client) | :white_check_mark: | 🚫 | :white_check_mark: | is a Kodi command line client, written in Python to control your Kodi instance through the JSON-RPC API |
+| [kodi-cli](https://github.com/JavaWiz1/kodi-cli) | :white_check_mark: | 🚫 | :white_check_mark: | used from the command line to execute commands against a target Kodi host via the RPC interface defined at JSON-RPC API This provides a Kodi JSON-RPC client. All Kodi JSON methods can be called as methods to the KodiJSONClient instance. |
+| [python-kodijson](https://github.com/jcsaaddupuy/python-kodijson) | :white_check_mark: | 🚫 | 🚫 | Simple python module that allow kodi control over JSON-RPC API |
+| [kodijsonrpc](https://github.com/davgeo/kodijsonrpc) | :white_check_mark: | 🚫 | 🚫 | This provides a Kodi JSON-RPC client. All Kodi JSON methods can be called as methods to the KodiJSONClient instance. |
+| [kodicontroller](https://github.com/davgeo/kodicontroller) | :white_check_mark: | 🚫 | 🚫 | This package provides an array of functions which can be used to control a Kodi instance. |
+| [PyKodi](https://github.com/OnFreund/PyKodi) | :white_check_mark: | 🚫 | 🚫 | An async python interface for Kodi over JSON-RPC. This is mostly designed to integrate with HomeAssistant. If you have other needs, there might be better packages available. |
    
 
 
