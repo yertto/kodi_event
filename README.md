@@ -41,6 +41,7 @@ In particular I want to send `Left` and `Right` button events so I can use the [
 I only found one alternatives that would connect to the Event Server.
 However to run in my Home Assistant it need to be able to run with the *very* minimal resources used by [BusyBox](https://busybox.net)
 > BusyBox combines tiny versions of many common UNIX utilities into a single small executable. It provides replacements for most of the utilities you usually find in GNU fileutils, shellutils, etc. The utilities in BusyBox generally have fewer options than their full-featured GNU cousins; however, the options that are included provide the expected functionality and behave very much like their GNU counterparts. BusyBox provides a fairly complete environment for any small or embedded system.
+
 Which means I needed something that would run at a bare minimum.
 (ie. in my case `bash` & BusyBox's version of `xxd`)
 
