@@ -58,3 +58,12 @@ ie. by running:
 
 Or run interactively using:
  * `kodi_event-test_menu`
+
+Or run individual commands:
+ * `kodi-button escape`
+ * `kodi-notification hello world`
+ * `kodi-log hello logs`
+
+Nb. these require a `EVENT_SERVER_HOST` env var pointing at the Kodi instance.
+
+(Or `BROADCAST=255.255.255.255` to broadcast to _all_ Kodi instances.)
