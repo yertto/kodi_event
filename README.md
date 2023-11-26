@@ -23,3 +23,17 @@ export PATH="$HOME/Code/event_client/bin:$PATH"
 
 However I wanted to use Kodi's [Event Server](https://kodi.wiki/view/EventServer) so I could use button events to drive the UI.
 In particular I want to send `Left` and `Right` button events so I can use the [Skip Steps](https://kodi.wiki/view/Skip_steps) to incrementally skip.
+
+
+## Testing
+The tests can be run with:
+ * `make test`
+
+These tests make "golden test" assertions against pre-created binary packets.
+(that have been manually tested against Kodi v20.1.0)
+ie. by running:
+ * `cat shpecs/support/NOTIFICATION/10chars_with_title.bin | EVENT_SERVER_HOST=$kodi_host kodi_event_send`
+ * `cat shpecs/support/BUTTON/R1-info.bin | EVENT_SERVER_HOST=$kodi_host kodi_event_send`
+
+Or run interactively using:
+ * `kodi_event-test_menu`
