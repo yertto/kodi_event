@@ -81,6 +81,8 @@ ie. by running:
 Or run interactively using:
  * `kodi_event-test_menu`
 
+<img width="1274" alt="Screen Shot 2023-11-28 at 1 11 51 am" src="https://github.com/yertto/kodi_event/assets/312445/d018cf89-5dae-4e2e-ba28-9b57abcd3d19">
+
 
 Where the "golden" pre-created binary packets can be re-created using `uid=1700610725` and checked with `diff` & `xxd`
 
