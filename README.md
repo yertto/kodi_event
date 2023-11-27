@@ -70,7 +70,7 @@ Or run using the generic `kodi_event` command setting a different packet type (p
  * `code=11     pt=BUTTON       kodi_event`
     * will send the button with code `"11"` 
  * `            pt=NOTIFICATION kodi_event hello world`
- * `icon=ha.png pt=NOTIFICATION kodi_event hello world with an icon`
+ * `icon=shpecs/support/ha.png pt=NOTIFICATION kodi_event hello world with an icon`
  * `            pt=LOG          kodi_event hello logs`
    
 Or there's also convenience scripts that pass in the `pt` type to `kodi_event`:
