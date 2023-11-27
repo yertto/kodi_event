@@ -63,13 +63,14 @@ Or run interactively using:
 Or run using the generic `kodi_event` command setting a different packet type (pt):
  * `            pt=BUTTON       kodi_event escape`
    * along with other button names for the default `map_name=KB` found in [keyboard.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/keyboard.xml)
- * `map_name=XG pt=BUTTON       kodi-button dpadleft`
+ * `map_name=XG pt=BUTTON       kodi_event dpadleft`
     * along with other button names for `map_name=XG` found in [gamepad.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/gamepad.xml)
- * `map_name=R1 pt=BUTTON       kodi-button mymusic`
+ * `map_name=R1 pt=BUTTON       kodi_event mymusic`
     * along with other button names for `map_name=R1` found in [remote.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/remote.xml)
- * `code=11     pt=BUTTON       kodi-button`
+ * `code=11     pt=BUTTON       kodi_event`
     * will send the button with code `"11"` 
  * `            pt=NOTIFICATION kodi_event hello world`
+ * `icon=ha.png pt=NOTIFICATION kodi_event hello world with an icon`
  * `            pt=LOG          kodi_event hello logs`
    
 Or there's also convenience scripts that pass in the `pt` type to `kodi_event`:
