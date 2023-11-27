@@ -1,11 +1,11 @@
 # kodi_event
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
-Bash script to compose and send [Event Server](https://kodi.wiki/view/EventServer) packets, for the purpose of controling a [Kodi](https://kodi.tv) instanace.
+Bash script to compose and send [Event Server](https://kodi.wiki/view/EventServer) packets, for the purpose of controling a [Kodi](https://kodi.tv) instance.
 
 Its only dependency is the [xxd](https://manpages.org/xxd) command.
 
-(which is usually packaged with [vim-common](https://packages.debian.org/sid/vim-common) so hopefully is already installed)
+(which is usually packaged with [vim-common](https://packages.debian.org/sid/vim-common) so should be widely available)
 
 ## Background
 It is a re-write in bash of the [xbmcclient.py](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/tools/EventClients/lib/python/xbmcclient.py) python library included in Kodi.
