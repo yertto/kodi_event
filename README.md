@@ -35,8 +35,6 @@ git clone git@github.com:yertto/event_client.git ~/Code/event_client
 export PATH="$HOME/Code/event_client/bin:$PATH"
 ```
 
-
-
 ### Alternatives
 | repo | [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API) | [Event Server](https://kodi.wiki/view/EventServer) | CLI | language | description |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -48,7 +46,6 @@ export PATH="$HOME/Code/event_client/bin:$PATH"
 | [kodijsonrpc](https://github.com/davgeo/kodijsonrpc) | :white_check_mark: | 🚫 | 🚫 | python | This provides a Kodi JSON-RPC client. All Kodi JSON methods can be called as methods to the KodiJSONClient instance. |
 | [kodicontroller](https://github.com/davgeo/kodicontroller) | :white_check_mark: | 🚫 | 🚫 | python | This package provides an array of functions which can be used to control a Kodi instance. |
 | [PyKodi](https://github.com/OnFreund/PyKodi) | :white_check_mark: | 🚫 | 🚫 | python | An async python interface for Kodi over JSON-RPC. This is mostly designed to integrate with HomeAssistant. If you have other needs, there might be better packages available. |
-   
 
 
 ## Motivation
@@ -83,8 +80,14 @@ ie. by running:
 
 Or run interactively using:
  * `kodi_event-test_menu`
-   
-Or run using the generic `kodi_event` command setting a different packet type (pt):
+
+
+Where the "golden" pre-created binary packets can be re-created using `uid=1700610725` and checked with `diff` & `xxd`
+
+eg.
+ * `diff -u <(xxd < shpecs/support/LOG/10chars.bin) <(uid=1700610725 pt=LOG kodi_event_packet "$(printf "X%.0s" {1..10})" | xxd)`
+  
+Or sent to Kodi using the generic `kodi_event` command setting a different packet type (`pt`) for each event type:
  * `            pt=BUTTON       kodi_event escape`
    * along with other button names for the default `map_name=KB` found in [keyboard.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/keyboard.xml)
  * `map_name=XG pt=BUTTON       kodi_event dpadleft`
@@ -105,6 +108,9 @@ Or there's also convenience scripts that pass in the `pt` type to `kodi_event`:
  * `kodi-ping                    ` # equavilent to `pt=PING         kodi_event            `
  * `kodi-bye                     ` # equavilent to `pt=BYE          kodi_event            `
    
-Nb. these require a `EVENT_SERVER_HOST` env var pointing at the Kodi instance.
+Nb. all these commands require an `EVENT_SERVER_HOST` env var pointing at the Kodi instance.
 
-(Or `BROADCAST=255.255.255.255` to broadcast to _all_ Kodi instances.)
+(Or `BROADCAST=255.255.255.255` to broadcast to _all_ running Kodi instances.)
+
+eg.
+ * `BROADCAST=255.255.255.255 kodi-notification hello all kodi instances`
