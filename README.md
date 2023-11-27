@@ -1,15 +1,34 @@
 # kodi_event
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
 
-Bash script to compose and send [Event Server](https://kodi.wiki/view/EventServer) packets to a [Kodi](https://kodi.tv).
+Bash script to compose and send [Event Server](https://kodi.wiki/view/EventServer) packets, for the purpose of controling a [Kodi](https://kodi.tv) instanace.
 
 Its only dependency is the [xxd](https://manpages.org/xxd) command.
+
 (which is usually packaged with [vim-common](https://packages.debian.org/sid/vim-common) so hopefully is already installed)
 
+## Background
+It is a re-write in bash of the [xbmcclient.py](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/tools/EventClients/lib/python/xbmcclient.py) python library included in Kodi.
+> Implementation of XBMC's UDP based input system.
+>
+> A set of classes that abstract the various packets that the event server
+> currently supports. In addition, there's also a class, XBMCClient, that
+> provides functions that sends the various packets
 
-(NB. This requires Kodi to be confirgured to [allow remote control from applications on other systems](https://kodi.wiki/view/Settings/Services/Control#Allow_remote_control_from_applications_on_other_systems))
+NB. Kodi _also_ allows control via it's [JSON-RPC API](https://kodi.wiki/view/JSON-RPC_API).
+> JSON-RPC is a HTTP- and/or raw TCP socket-based interface for communicating with Kodi. It replaces the deprecated HTTP API.
+
+However this tool is using a _third_ way to control Kodi - the [EventServer](https://kodi.wiki/view/EventServer)
+> The EventServer in Kodi was created to satisfy a need to support many input devices across multiple hardware platforms. Adding direct support for a multitude of devices generally decreases performance and stability, and becomes difficult to maintain. The EventServer was created to provide a simple, reliable way to communicate with and control Kodi.
+
+A quick and easy way to tell clients apart is to look for the port number they use to connect to Kodi.
+ * JSON-RPC API accepts clients over TCP on port `9090`
+ * EventServer accpests clients over UDP on port `9777`
 
 ## Getting Started
+
+This (and any other Event Client) require Kodi to be configured to [allow remote control from applications on other systems](https://kodi.wiki/view/Settings/Services/Control#Allow_remote_control_from_applications_on_other_systems).
+
 ### Installation:
 ```
 git clone git@github.com:yertto/event_client.git ~/Code/event_client
@@ -34,17 +53,20 @@ export PATH="$HOME/Code/event_client/bin:$PATH"
 
 ## Motivation
 
-* [Home Assistant - Kodi](https://www.home-assistant.io/integrations/kodi) ([View Source](https://github.com/home-assistant/core/tree/dev/homeassistant/components/kodi)) is a Home Assistant integration to control a [Kodi](https://kodi.tv) multimedia system.
+[Home Assistant - Kodi](https://www.home-assistant.io/integrations/kodi) ([View Source](https://github.com/home-assistant/core/tree/dev/homeassistant/components/kodi)) is a Home Assistant integration to control a [Kodi](https://kodi.tv) multimedia system.
 
-However I wanted to use Kodi's [Event Server](https://kodi.wiki/view/EventServer) so I could use button events to drive the UI.
+However I wanted to use Kodi's [Event Server](https://kodi.wiki/view/EventServer) so I could use button events to drive the UI and Home Assistant didn't appear to do that.
+
 In particular I want to send `Left` and `Right` button events so I can use the [Skip Steps](https://kodi.wiki/view/Skip_steps) to incrementally skip.
 
-I only found one alternatives that would connect to the Event Server.
-However to run in my Home Assistant it need to be able to run with the *very* minimal resources used by [BusyBox](https://busybox.net)
+I only found one alternative that would connect to the Event Server.
+
+However to run in my Home Assistant it needs to be able to run with the *very* minimal resources used by [BusyBox](https://busybox.net)
 > BusyBox combines tiny versions of many common UNIX utilities into a single small executable. It provides replacements for most of the utilities you usually find in GNU fileutils, shellutils, etc. The utilities in BusyBox generally have fewer options than their full-featured GNU cousins; however, the options that are included provide the expected functionality and behave very much like their GNU counterparts. BusyBox provides a fairly complete environment for any small or embedded system.
 
-Which means I needed something that would run at a bare minimum.
-(ie. in my case `bash` & BusyBox's version of `xxd`)
+So I went with `bash` & BusyBox's version of `xxd`.
+
+And remarkably enough, they seem to achieve everything the python library does.
 
 
 ## Testing
