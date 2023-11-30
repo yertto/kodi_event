@@ -116,3 +116,7 @@ Nb. all these commands require an `EVENT_SERVER_HOST` env var pointing at the Ko
 
 eg.
  * `BROADCAST=255.255.255.255 kodi-notification hello all kodi instances`
+
+Or if your router doesn't like that, then something like:
+ * `BROADCAST=192.168.1.255 kodi-notification hello all kodi instances`
+   * (ie. if your kodi instances ar on the `192.168.1.x` network.)
