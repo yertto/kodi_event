@@ -97,7 +97,12 @@ Or sent to Kodi using the generic `kodi_event` command setting a different packe
  * `map_name=R1 pt=BUTTON       kodi_event mymusic`
     * along with other button names for `map_name=R1` found in [remote.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/remote.xml)
  * `code=11     pt=BUTTON       kodi_event`
-    * will send the button with code `"11"` 
+    * will send the button with code `"11"`
+ * `            pt=ACTION       kodi_event CreateBookmark`
+    * for all the ACTIONs see
+      * https://kodi.wiki/view/Action_IDs
+      * https://kodi.wiki/view/List_of_built-in_functions#Player_built-in's
+      * https://xbmc.github.io/docs.kodi.tv/master/kodi-base/d0/d3e/page__list_of_built_in_functions.html
  * `            pt=NOTIFICATION kodi_event hello world`
  * `icon=shpecs/support/ha.png pt=NOTIFICATION kodi_event hello world with an icon`
  * `            pt=LOG          kodi_event hello logs`
@@ -105,6 +110,7 @@ Or sent to Kodi using the generic `kodi_event` command setting a different packe
 Or there's also convenience scripts that pass in the `pt` type to `kodi_event`:
  * `kodi-helo                    ` # equavilent to `pt=HELO         kodi_event            `
  * `kodi-button       escape     ` # equavilent to `pt=BUTTON       kodi_event escape     `
+ * `kodi-action    CreateBookmark` # equavilent to `pt=ACTION       kodi_event CreateBookmark`     
  * `kodi-notification hello world` # equavilent to `pt=NOTIFICATION kodi_event hello world`
  * `kodi-log          hello logs ` # equavilent to `pt=LOG          kodi_event hello logs `
  * `kodi-ping                    ` # equavilent to `pt=PING         kodi_event            `
