@@ -92,6 +92,7 @@ eg. when a `diff` of their `xxd` hexdumps produces no difference...
 Or sent to Kodi using the generic `kodi_event` command setting a different packet type (`pt`) for each event type:
  * `            pt=BUTTON       kodi_event escape`
    * along with other button names for the default `map_name=KB` found in [keyboard.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/keyboard.xml)
+   * https://kodi.wiki/view/Keyboard_controls
  * `map_name=XG pt=BUTTON       kodi_event dpadleft`
     * along with other button names for `map_name=XG` found in [gamepad.xml](https://github.com/xbmc/xbmc/blob/5ec39d778c6b62e3a229f6a20ebd4e4aa96ecead/system/keymaps/gamepad.xml)
  * `map_name=R1 pt=BUTTON       kodi_event mymusic`
